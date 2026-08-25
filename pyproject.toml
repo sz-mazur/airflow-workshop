@@ -1,0 +1,55 @@
+[project]
+name = "airflow-workshop-solution"
+version = "1.1.0"
+description = "The aim of the course is initiation into Airflow and set path for the better understanding scheduling."
+authors = [
+  { name = "Alan Głodek", email = "alan.glodek@datumo.pl" }
+]
+
+[tool.pyright]
+include = ["tasks", "tests"]
+exclude = ["**/__pycache__"]
+
+defineConstant = { DEBUG = true }
+stubPath = "src/stubs"
+
+reportMissingImports = true
+reportMissingTypeStubs = false
+reportArgumentType = false     # Disables errors about incorrect argument types passed to functions - added due to problems with airflow-workshop repo after repo-sync
+reportAssignmentType = false   # Disables errors about assigning values of the wrong type to variables - added due to problems with airflow-workshop repo after repo-sync
+reportReturnType = false       # Disables errors about returning a value of the wrong type from a function - added due to problems with airflow-workshop repo after repo-sync
+
+pythonVersion = "3.11"
+pythonPlatform = "All"
+
+executionEnvironments = [{ root = "airflow-workshop-solution" }]
+
+[tool.ruff]
+exclude = [".git", ".venv"]
+line-length = 120
+show-fixes = true
+
+lint.select = [
+
+  "B",   # bugbear rules
+  "E",   # pycodestyle errors (includes indentation, whitespace, etc)
+  "W",   # pycodestyle warnings
+  "F",   # Pyflakes (undefined names, unused imports, etc)
+  "I",   # isort (import sorting)
+  "N",   # pep8-naming (naming conventions)
+  "PL",  # pylint (various checks)
+  "ARG",   # unused arguments,
+  "B008",   #function calls in defaults
+  "TCH004",  # Move imports into TYPE_CHECKING block
+  "TCH005",  # Empty TYPE_CHECKING block
+  "TID251"   # Banned imports
+]
+
+lint.ignore = [
+  "ARG001",  # Ignores unused arguments in functions - added due to problems with airflow-workshop repo after repo-sync
+]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+skip-magic-trailing-comma = false

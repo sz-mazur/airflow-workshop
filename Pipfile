@@ -1,0 +1,19 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+requests = ">=2.8"
+pandas = ">=1.5.2"
+apache-airflow = {extras = ["cncf.kubernetes"], version = "==2.5.0"}
+cron-converter = "1.2.2"
+pendulum = "==2.1.2"
+
+[dev-packages]
+pyright = "==1.1.403"
+pytest = ">=7.2.0"
+pre-commit = ">=2.20.0"
+
+[requires]
+python_version = "3.11"
