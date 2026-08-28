@@ -1,6 +1,8 @@
+import pendulum
 from airflow import DAG
 from airflow.operators.empty import EmptyOperator
 from airflow.operators.python import PythonOperator
+from pendulum import DateTime
 
 # Parameter getting from Airflow
 try_number_count: str = "{{ task_instance.try_number }}"
@@ -20,18 +22,17 @@ def date_info(date_val: str) -> None:
     print("You run this task at", str(date_val))
 
 
-# TODO
-START_DATE = ...
-SCHEDULE = ...
+START_DATE: DateTime = pendulum.datetime(2026, 8, 23)
+SCHEDULE: str = "@daily"
 
 
 # A DAG represents a workflow, a collection of tasks
 with DAG(
-    # TODO
     dag_id="task3_step_1_3",
     start_date=START_DATE,
     schedule=SCHEDULE,
     tags=["task3", "step1"],
+    catchup=False,
 ) as dag:
     # Tasks are represented as operators
     EmptyOperator(
@@ -52,6 +53,7 @@ with DAG(
 
 """
 What happens when we start DAG?
-# TODO
+With setting catchup=False only one DAG Run is scheduled for the current data interval, from 26.08 to 27.08, 
+airflow skips all missed intervals and schedules only the latest available interval.
 ...
 """

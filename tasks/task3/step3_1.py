@@ -12,12 +12,12 @@ def do_autogenerate_operator(operator_id: int, **_kwargs: dict) -> None:
 
 
 with DAG(
-    # TODO
     dag_id="task3_step_3_1",
     start_date=datetime(2023, 1, 1),
     schedule="@daily",
     catchup=True,
     tags=["task3", "step3"],
+    max_active_tasks=2
 ) as dag:
     for i in range(16):
         PythonOperator(

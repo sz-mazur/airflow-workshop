@@ -1,3 +1,4 @@
+import pendulum
 from airflow import DAG
 from airflow.operators.empty import EmptyOperator
 from airflow.operators.python import PythonOperator
@@ -5,7 +6,7 @@ from pendulum.datetime import DateTime
 
 # Parameter getting from Airflow
 try_number_count = "{{ task_instance.try_number }}"
-date_value = ...
+date_value = "{{ ds }}"
 
 
 # Functions for PythonOperator
@@ -21,9 +22,8 @@ def date_info(date_val: str) -> None:
     print("You run this task at", str(date_val))
 
 
-# TODO
-START_DATE: DateTime = ...
-SCHEDULE: str = ...
+START_DATE: DateTime = pendulum.datetime(2026, 8, 23)
+SCHEDULE: str = "@daily"
 
 # A DAG represents a workflow, a collection of tasks
 with DAG(
@@ -51,6 +51,10 @@ with DAG(
 
 """
 What happens when we start DAG?
-# TODO
-...
+After changing the start_date to a static date 4 days in the past and unpausing the DAG, 
+airflow immediately schedules 4 DAG Runs for 23.08, 24.08, 25.08 and 26.08.
+This is called "catchup" - airflow creates DAG Runs for the intervals 
+between the start_date and the current date that have not been executed yet.
+The {{ ds }} variable in each DAG Run represents the logical date of that particular run, 
+not the actual date and time when the task is executed.
 """
