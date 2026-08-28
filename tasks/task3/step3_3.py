@@ -20,13 +20,12 @@ with DAG(
     catchup=True,
     tags=["task3", "step3"],
     max_active_tasks=2,
-    max_active_runs=2
+    max_active_runs=2,
 ) as dag:
     for i in range(16):
         PythonOperator(
             task_id="auto_generated_" + str(i),
             python_callable=do_autogenerate_operator,
             op_kwargs={"operator_id": i},
-            depends_on_past=(i < DEPENDENCY_SWITCH_INDEX)
+            depends_on_past=(i < DEPENDENCY_SWITCH_INDEX),
         )
-

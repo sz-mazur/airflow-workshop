@@ -8,7 +8,7 @@ from tasks.task2.dags_config import OUTPUT_PATH
 class WorkflowFinishedOperator(BaseOperator):
     template_fields = ("filenames",)
 
-    def __init__(self, filenames: List[str],**kwargs):
+    def __init__(self, filenames: List[str], **kwargs):
         super().__init__(**kwargs)
         self.filenames = filenames
 

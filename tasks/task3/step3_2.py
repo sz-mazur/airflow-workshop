@@ -18,7 +18,7 @@ with DAG(
     catchup=True,
     tags=["task3", "step3"],
     max_active_tasks=2,
-    max_active_runs=2
+    max_active_runs=2,
 ) as dag:
     for i in range(16):
         PythonOperator(
