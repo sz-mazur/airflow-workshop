@@ -1,6 +1,7 @@
 from time import sleep
 
 from airflow import DAG
+from airflow.operators.python import PythonOperator
 from pendulum import datetime
 
 DEPENDENCY_SWITCH_INDEX = 5
@@ -26,6 +27,6 @@ with DAG(
             task_id="auto_generated_" + str(i),
             python_callable=do_autogenerate_operator,
             op_kwargs={"operator_id": i},
-            depends_on_past=(i<5)
+            depends_on_past=(i < DEPENDENCY_SWITCH_INDEX)
         )
 

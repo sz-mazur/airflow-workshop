@@ -2,7 +2,7 @@ import pendulum
 from airflow import DAG
 from airflow.operators.empty import EmptyOperator
 from airflow.operators.python import PythonOperator
-from pendulum import DateTime
+from pendulum.datetime import DateTime
 
 # Parameter getting from Airflow
 try_number_count: str = "{{ task_instance.try_number }}"
