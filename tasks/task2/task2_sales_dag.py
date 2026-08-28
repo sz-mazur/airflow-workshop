@@ -129,4 +129,11 @@ with DAG(
     )
 
     # Dependencies
-    waiting_for_data >> [mean_revenue, max_revenue] >> diff_revenue >> [delete_source_file, workflow_finished_operator]
+    waiting_for_data >> mean_revenue
+    waiting_for_data >> max_revenue
+
+    mean_revenue >> diff_revenue
+    max_revenue >> diff_revenue
+
+    diff_revenue >> delete_source_file
+    diff_revenue >> workflow_finished_operator
