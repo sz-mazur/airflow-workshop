@@ -1,10 +1,12 @@
+from datetime import datetime
+
 from airflow import DAG
 from airflow.operators.empty import EmptyOperator
 from airflow.operators.python import PythonOperator
 
 # Parameter getting from Airflow
 try_number_count = "{{ task_instance.try_number }}"
-date_value = ...
+date_value = "{{ ds }}"
 
 
 # Functions for PythonOperator
@@ -20,9 +22,8 @@ def date_info(date_val: str) -> None:
     print("You run this task at", str(date_val))
 
 
-# TODO
-START_DATE = ...
-SCHEDULE = ...
+START_DATE = datetime.now()
+SCHEDULE = "@daily"
 
 # A DAG represents a workflow, a collection of tasks
 with DAG(
@@ -50,6 +51,11 @@ with DAG(
 
 """
 What happens when we start DAG?
-# TODO
-...
+The DAG doesn't start on its own immediately. 
+Because the start_date is assigned to current time every time the scheduler parses the DAG,
+the DAG Run will never happen, due to the fact how the data intervals work.
+For @daily schedule, the first DAG Run would start about 24 hours after the start date,
+ensuring that DAG operates on a complete one-day set of data,
+but as the start date is getting overwritten every time the DAG files get parsed (30 sec by default) - 
+for the @daily schedule the DAG Run will never run, unless started manually.
 """

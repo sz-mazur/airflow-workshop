@@ -12,10 +12,9 @@ def question01() -> dict[str, int]:
     @schedule = "@daily"
     @zone = Buenos Aires UTC-3
     """
-    # TODO
-    answer1 = ...
-    answer2 = ...
-    answer3 = ...
+    answer1 = "2023-01-01"
+    answer2 = "2023-01-02"
+    answer3 = "2023-01-03"
 
     answer = {"first": hash(answer1), "second": hash(answer2), "third": hash(answer3)}
     return answer
@@ -28,10 +27,9 @@ def question02() -> dict[str, int]:
     @schedule = "15 4 * * *"
     @zone = Warsaw UTC+1/+2
     """
-    # TODO
-    answer1 = ...
-    answer2 = ...
-    answer3 = ...
+    answer1 = "2023-02-02T04:15:00+01:00"
+    answer2 = "2023-02-03T04:15:00+01:00"
+    answer3 = "2023-02-04T04:15:00+01:00"
 
     answers = {"first": hash(answer1), "second": hash(answer2), "third": hash(answer3)}
     return answers
@@ -44,10 +42,9 @@ def question03() -> dict[str, int]:
     @schedule = "0/25 * * * *"
     @zone = Tokyo UTC+9
     """
-    # TODO
-    answer1 = ...
-    answer2 = ...
-    answer3 = ...
+    answer1 = "2022-09-17T11:50:00+09:00"
+    answer2 = "2022-09-17T12:00:00+09:00"
+    answer3 = "2022-09-17T12:25:00+09:00"
 
     answers = {"first": hash(answer1), "second": hash(answer2), "third": hash(answer3)}
     return answers
@@ -60,10 +57,9 @@ def question04() -> dict[str, int]:
     @schedule = "10 11 5 6 *"
     @zone = Bogota UTC-5
     """
-    # TODO
-    answer1 = ...
-    answer2 = ...
-    answer3 = ...
+    answer1 = "2020-06-05"
+    answer2 = "2021-06-05"
+    answer3 = "2022-06-05"
 
     answers = {"first": hash(answer1), "second": hash(answer2), "third": hash(answer3)}
     return answers
@@ -76,10 +72,9 @@ def question05() -> dict[str, int]:
     @schedule = "0 10 * */3 *"
     @zone = Honolulu UTC-10
     """
-    # TODO
-    answer1 = ...
-    answer2 = ...
-    answer3 = ...
+    answer1 = "2019-10-31T10:00:00-10:00"
+    answer2 = "2020-01-01T10:00:00-10:00"
+    answer3 = "2020-01-02T10:00:00-10:00"
 
     answers = {"first": hash(answer1), "second": hash(answer2), "third": hash(answer3)}
     return answers
